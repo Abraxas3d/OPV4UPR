@@ -40,7 +40,7 @@ entity axi_opv4upr is
 -- we don't use them but we have to match them.
            s_axis_strb  : in STD_LOGIC_VECTOR (7 downto 0);
            s_axis_keep  : in STD_LOGIC_VECTOR (7 downto 0);
-           s_axis_user  : in STD_LOGIC;
+           s_axis_user  : in STD_LOGIC_VECTOR (0 downto 0);
            s_axis_id    : in STD_LOGIC_VECTOR (7 downto 0);
            s_axis_dest  : in STD_LOGIC_VECTOR (3 downto 0);
            s_axis_last  : in STD_LOGIC);

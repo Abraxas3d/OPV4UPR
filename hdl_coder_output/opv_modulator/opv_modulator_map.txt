@@ -1,0 +1,12 @@
+ --> opv_modulator_pkg
+opv_pluto_transmitter_HDL_coder_input/opv_modulator/1//4 Tb/DitherGen --> DitherGen
+opv_pluto_transmitter_HDL_coder_input/opv_modulator/1//4 Tb/WaveformGen/SinLookUpTableGen --> SinLookUpTableGen
+opv_pluto_transmitter_HDL_coder_input/opv_modulator/1//4 Tb/WaveformGen/CosLookUpTableGen --> CosLookUpTableGen
+opv_pluto_transmitter_HDL_coder_input/opv_modulator/1//4 Tb/WaveformGen --> WaveformGen
+opv_pluto_transmitter_HDL_coder_input/opv_modulator/1//4 Tb --> alpha4_Tb
+opv_pluto_transmitter_HDL_coder_input/opv_modulator/carrier/DitherGen --> DitherGen_block
+opv_pluto_transmitter_HDL_coder_input/opv_modulator/carrier/WaveformGen/SinLookUpTableGen --> SinLookUpTableGen_block
+opv_pluto_transmitter_HDL_coder_input/opv_modulator/carrier/WaveformGen/CosLookUpTableGen --> CosLookUpTableGen_block
+opv_pluto_transmitter_HDL_coder_input/opv_modulator/carrier/WaveformGen --> WaveformGen_block
+opv_pluto_transmitter_HDL_coder_input/opv_modulator/carrier --> carrier
+opv_pluto_transmitter_HDL_coder_input/opv_modulator --> opv_modulator

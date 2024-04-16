@@ -1,0 +1,13 @@
+vlib work
+vcom  opv_modulator_pkg.vhd
+vcom  DitherGen.vhd
+vcom  SinLookUpTableGen.vhd
+vcom  CosLookUpTableGen.vhd
+vcom  WaveformGen.vhd
+vcom  alpha4_Tb.vhd
+vcom  DitherGen_block.vhd
+vcom  SinLookUpTableGen_block.vhd
+vcom  CosLookUpTableGen_block.vhd
+vcom  WaveformGen_block.vhd
+vcom  carrier.vhd
+vcom  opv_modulator.vhd

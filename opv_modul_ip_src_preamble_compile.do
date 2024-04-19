@@ -1,0 +1,4 @@
+vlib work
+vcom  opv_modul_ip_src_data_sample_and_hold.vhd
+vcom  opv_modul_ip_src_preamble_sample_and_hold.vhd
+vcom  opv_modul_ip_src_preamble.vhd

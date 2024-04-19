@@ -1,0 +1,10 @@
+open_system('opv_pluto_transmitter_HDL_coder_input');
+open_system('gm_opv_pluto_transmitter_HDL_coder_input');
+cs.HiliteType = 'user1';
+cs.ForegroundColor = 'black';
+cs.BackgroundColor = 'cyan';
+set_param(0, 'HiliteAncestorsData', cs);
+hilite_system('gm_opv_pluto_transmitter_HDL_coder_input/preamble/preamble values', 'user1');
+annotate_port('gm_opv_pluto_transmitter_HDL_coder_input/preamble/preamble values', 0, 1, 'Lookup Table mapped to RAM');
+hilite_system('opv_pluto_transmitter_HDL_coder_input/preamble/preamble values', 'user1');
+annotate_port('opv_pluto_transmitter_HDL_coder_input/preamble/preamble values', 0, 1, 'Lookup Table mapped to RAM');

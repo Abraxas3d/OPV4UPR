@@ -1,0 +1,3 @@
+opv_pluto_transmitter_HDL_coder_input/preamble/data sample and hold --> opv_modul_ip_src_data_sample_and_hold
+opv_pluto_transmitter_HDL_coder_input/preamble/preamble sample and hold --> opv_modul_ip_src_preamble_sample_and_hold
+opv_pluto_transmitter_HDL_coder_input/preamble --> opv_modul_ip_src_preamble

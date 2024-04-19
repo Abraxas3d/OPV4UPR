@@ -5,3 +5,9 @@
 The HDL Coder output files are located in the opv_modulator dictory.
 
 A Vivado project is located in the opv_modulator_vivado_project directory. 
+
+### Transmitter Preamble Insertion
+
+The HDL Coder output files are located in the opv_preamble directory.
+
+A Vivado project is located in the opv_preamble_vivado_project directory.

@@ -7,8 +7,8 @@ Generated logfile:
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 
 source vivado_ip_package.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:23 . Memory (MB): peak = 1735.969 ; gain = 88.984 ; free physical = 8870 ; free virtual = 17223
-update_compile_order: Time (s): cpu = 00:00:02 ; elapsed = 00:00:07 . Memory (MB): peak = 1735.984 ; gain = 0.000 ; free physical = 8874 ; free virtual = 17228
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:23 . Memory (MB): peak = 1735.969 ; gain = 88.984 ; free physical = 8419 ; free virtual = 16839
+update_compile_order: Time (s): cpu = 00:00:02 ; elapsed = 00:00:06 . Memory (MB): peak = 1735.984 ; gain = 0.000 ; free physical = 8416 ; free virtual = 16836
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/matt/OPV_TX_abraxas3d/preamble-HDL/ipcore'.
 WARNING: [IP_Flow 19-3656] If you move the project, the path for repository '/home/matt/OPV_TX_abraxas3d/preamble-HDL/ipcore' may become invalid. A better location for the repository would be in a path adjacent to the project. (Current project location is '/home/matt/OPV_TX_abraxas3d/preamble-HDL/ipcore/opv_modul_ip_v1_0/prj_ip'.)
@@ -26,7 +26,7 @@ INFO: [IP_Flow 19-4728] Bus Interface 'IPCORE_CLK': Added interface parameter 'A
 WARNING: [IP_Flow 19-5661] Bus Interface 'IPCORE_CLK' does not have any bus interfaces associated with it.
 INFO: [IP_Flow 19-2181] Payment Required is not set for this core.
 INFO: [IP_Flow 19-2187] The Product Guide file is missing.
-ipx::package_project: Time (s): cpu = 00:00:00.45 ; elapsed = 00:00:06 . Memory (MB): peak = 1803.805 ; gain = 3.969 ; free physical = 8852 ; free virtual = 17205
+ipx::package_project: Time (s): cpu = 00:00:00.41 ; elapsed = 00:00:06 . Memory (MB): peak = 1803.805 ; gain = 3.969 ; free physical = 8405 ; free virtual = 16825
 WARNING: [IP_Flow 19-1971] File named "hdl/opv_modul_ip_src_data_sample_and_hold.vhd" already exists in file group "xilinx_anylanguagesynthesis", cannot add it again.
 WARNING: [IP_Flow 19-1971] File named "hdl/opv_modul_ip_src_data_sample_and_hold.vhd" already exists in file group "xilinx_anylanguagebehavioralsimulation", cannot add it again.
 WARNING: [IP_Flow 19-1971] File named "hdl/opv_modul_ip_src_preamble_sample_and_hold.vhd" already exists in file group "xilinx_anylanguagesynthesis", cannot add it again.
@@ -37,8 +37,6 @@ WARNING: [IP_Flow 19-1971] File named "hdl/opv_modul_ip_reset_sync.vhd" already 
 WARNING: [IP_Flow 19-1971] File named "hdl/opv_modul_ip_reset_sync.vhd" already exists in file group "xilinx_anylanguagebehavioralsimulation", cannot add it again.
 WARNING: [IP_Flow 19-1971] File named "hdl/opv_modul_ip_dut.vhd" already exists in file group "xilinx_anylanguagesynthesis", cannot add it again.
 WARNING: [IP_Flow 19-1971] File named "hdl/opv_modul_ip_dut.vhd" already exists in file group "xilinx_anylanguagebehavioralsimulation", cannot add it again.
-WARNING: [IP_Flow 19-1971] File named "hdl/opv_modul_ip_cop.vhd" already exists in file group "xilinx_anylanguagesynthesis", cannot add it again.
-WARNING: [IP_Flow 19-1971] File named "hdl/opv_modul_ip_cop.vhd" already exists in file group "xilinx_anylanguagebehavioralsimulation", cannot add it again.
 WARNING: [IP_Flow 19-1971] File named "hdl/opv_modul_ip_addr_decoder.vhd" already exists in file group "xilinx_anylanguagesynthesis", cannot add it again.
 WARNING: [IP_Flow 19-1971] File named "hdl/opv_modul_ip_addr_decoder.vhd" already exists in file group "xilinx_anylanguagebehavioralsimulation", cannot add it again.
 WARNING: [IP_Flow 19-1971] File named "hdl/opv_modul_ip_SimpleDualPortRAM_generic.vhd" already exists in file group "xilinx_anylanguagesynthesis", cannot add it again.
@@ -57,6 +55,6 @@ WARNING: [IP_Flow 19-1971] File named "hdl/opv_modul_ip_axi4.vhd" already exists
 WARNING: [IP_Flow 19-1971] File named "hdl/opv_modul_ip_axi4.vhd" already exists in file group "xilinx_anylanguagebehavioralsimulation", cannot add it again.
 WARNING: [IP_Flow 19-1971] File named "hdl/opv_modul_ip.vhd" already exists in file group "xilinx_anylanguagesynthesis", cannot add it again.
 WARNING: [IP_Flow 19-1971] File named "hdl/opv_modul_ip.vhd" already exists in file group "xilinx_anylanguagebehavioralsimulation", cannot add it again.
-INFO: [Common 17-206] Exiting Vivado at Fri Apr 19 03:04:18 2024...
+INFO: [Common 17-206] Exiting Vivado at Fri Apr 19 04:55:17 2024...
 
-Elapsed time is 348.7399 seconds.
+Elapsed time is 349.0148 seconds.

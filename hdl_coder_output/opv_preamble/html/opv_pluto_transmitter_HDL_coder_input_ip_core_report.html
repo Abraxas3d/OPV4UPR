@@ -118,7 +118,7 @@ thead.reportTableHeader {
 <tr>
 <td>IP core generated on
 </td>
-<td class="summaryTableSndColEvenRow">19-Apr-2024 02:57:45
+<td class="summaryTableSndColEvenRow">19-Apr-2024 04:48:45
 </td>
 </tr>
 <tr>
@@ -137,7 +137,7 @@ You chose the following target interface configuration for
 :
 <br/><br/>
 Processor/FPGA synchronization mode: 
-<b>Coprocessing - blocking</b>
+<b>Free running</b>
 <br/><br/>
 Target platform interface table:
 <br/>
@@ -166,9 +166,9 @@ Target platform interface table:
 </td>
 <td>boolean
 </td>
-<td>AXI4
+<td>No Interface Specified
 </td>
-<td>x"100"
+<td>
 </td>
 <td>
 </td>
@@ -196,7 +196,7 @@ Target platform interface table:
 </td>
 <td>AXI4
 </td>
-<td>x"104"
+<td>x"100"
 </td>
 <td>
 </td>
@@ -237,43 +237,19 @@ The following AXI4 bus accessible registers were generated for this IP core:
 </td>
 </tr>
 <tr>
-<td>IPCore_Strobe
+<td>IPCore_Timestamp
 </td>
 <td>0x8
 </td>
-<td>write 1 to bit 0 after write all input data
+<td>contains unique IP timestamp (yymmddHHMM): 2404190448
 </td>
 </tr>
 <tr>
-<td class="distinctCellColor">IPCore_Ready
-</td>
-<td class="distinctCellColor">0xC
-</td>
-<td class="distinctCellColor">wait until bit 0 is 1 before read output data
-</td>
-</tr>
-<tr>
-<td>IPCore_Timestamp
-</td>
-<td>0x10
-</td>
-<td>contains unique IP timestamp (yymmddHHMM): 2404190243: 2404190257
-</td>
-</tr>
-<tr>
-<td class="distinctCellColor">data_Data
+<td class="distinctCellColor">Out1_Data
 </td>
 <td class="distinctCellColor">0x100
 </td>
-<td class="distinctCellColor">data register for Inport data
-</td>
-</tr>
-<tr>
-<td>Out1_Data
-</td>
-<td>0x104
-</td>
-<td>data register for Outport Out1
+<td class="distinctCellColor">data register for Outport Out1
 </td>
 </tr>
 </tbody>
@@ -312,15 +288,15 @@ For example, to reset the IP core, write 0x1 to the bit 0 of IPCore_Reset regist
 <br/><br/>
 The AXI4 Slave port to pipeline register ratio selected as 50 in task 3.2 for this model. The default delay to read AXI4 register is one clock cycle.
 Depending on the selected ratio and IO connected to AXI4 interface, register pipelining is introduced in the read logic of AXI4 registers.
-For your model AXI4 pipeline register ratio setting 50 is larger than all the readable AXI4 slave registers. Total readable AXI4 slave registers are 3, so no pipelining is added to the AXI4 register read back logic.
+For your model AXI4 pipeline register ratio setting 50 is larger than all the readable AXI4 slave registers. Total readable AXI4 slave registers are 2, so no pipelining is added to the AXI4 register read back logic.
 <br/><br/>
 <b>Processor/FPGA Synchronization</b>
 <br/><br/>
-In 
-<b>Coprocessing - blocking </b>
-mode, the IP core (HW) is generated with explicit blocking synchronization, so it causes embedded processor software execution (SW) to wait for the HW to finish. For example, as shown in the diagram below, for each SW sample, the processor first sends input data to the IP core. The processor then starts the IP core processing by writing 0x1 to the IPCore_Strobe register. The processor then polls the IPCore_Ready register to check whether IP Core has finished its processing. Once the processor reads a value of 0x1 from the IPCore_Ready register, the processor then reads the data out from the IP core. 
+The 
+<b>Free running </b>
+mode means there is no explicit synchronization between embedded processor software execution (SW) and the IP core (HW). SW and HW runs independently. The data written from the processor to IP core takes effect immediately, and the data read from the IP core is the latest data available on the IP core output ports. 
 <br/><br/>
-<img src="coprocessing_blocking.jpg"/>
+<img src="free_running.jpg"/>
 <br/><br/>
 <b>Xilinx Vivado Environment Integration</b>
 <br/><br/>
@@ -373,8 +349,6 @@ Following files are generated under this folder:
 <a href="matlab:edit('/home/matt/OPV_TX_abraxas3d/preamble-HDL/ipcore/opv_modul_ip_v1_0/hdl/opv_modul_ip_reset_sync.vhd')">hdl/opv_modul_ip_reset_sync.vhd</a>
 <br/>
 <a href="matlab:edit('/home/matt/OPV_TX_abraxas3d/preamble-HDL/ipcore/opv_modul_ip_v1_0/hdl/opv_modul_ip_dut.vhd')">hdl/opv_modul_ip_dut.vhd</a>
-<br/>
-<a href="matlab:edit('/home/matt/OPV_TX_abraxas3d/preamble-HDL/ipcore/opv_modul_ip_v1_0/hdl/opv_modul_ip_cop.vhd')">hdl/opv_modul_ip_cop.vhd</a>
 <br/>
 <a href="matlab:edit('/home/matt/OPV_TX_abraxas3d/preamble-HDL/ipcore/opv_modul_ip_v1_0/hdl/opv_modul_ip_addr_decoder.vhd')">hdl/opv_modul_ip_addr_decoder.vhd</a>
 <br/>

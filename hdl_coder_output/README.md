@@ -11,3 +11,9 @@ A Vivado project is located in the opv_modulator_vivado_project directory.
 The HDL Coder output files are located in the opv_preamble directory.
 
 A Vivado project is located in the opv_preamble_vivado_project directory.
+
+### Create Even and Odd Bitstreams
+
+The HDL Coder output files are located in the create_even_and_odd directory.
+
+A Vivado project is located in the create_even_and_odd_vivado_project directory. 

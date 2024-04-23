@@ -30,23 +30,17 @@ end axi_opv4upr_tb;
 architecture Behavioral of axi_opv4upr_tb is
     component axi_opv4upr is
         port(
-           s_axis_aclk : in STD_LOGIC;
+           clk         : in STD_LOGIC;
            reset       : in STD_LOGIC;
            m_axis_data : out STD_LOGIC_VECTOR (63 downto 0);
            s_axis_data : in STD_LOGIC_VECTOR (63 downto 0);
            s_axis_ready : out STD_LOGIC;
            s_axis_valid : in STD_LOGIC;
            m_axis_valid : out STD_LOGIC;
-           m_axis_ready : in STD_LOGIC;
-           s_axis_strb  : in STD_LOGIC_VECTOR (7 downto 0);
-           s_axis_keep  : in STD_LOGIC_VECTOR (7 downto 0);
-           s_axis_user  : in STD_LOGIC_VECTOR (0 downto 0);
-           s_axis_id    : in STD_LOGIC_VECTOR (7 downto 0);
-           s_axis_dest  : in STD_LOGIC_VECTOR (3 downto 0);
-           s_axis_last  : in STD_LOGIC);
+           m_axis_ready : in STD_LOGIC);
     end component axi_opv4upr;
     
-    signal s_axis_aclk  :  STD_LOGIC;
+    signal clk          :  STD_LOGIC;
     signal reset        :  STD_LOGIC;
     signal m_axis_data  :  STD_LOGIC_VECTOR (63 downto 0);
     signal s_axis_data  :  STD_LOGIC_VECTOR (63 downto 0);
@@ -54,29 +48,18 @@ architecture Behavioral of axi_opv4upr_tb is
     signal s_axis_valid :  STD_LOGIC;
     signal m_axis_valid :  STD_LOGIC;
     signal m_axis_ready :  STD_LOGIC;
-    signal s_axis_strb  :  STD_LOGIC_VECTOR (7 downto 0);
-    signal s_axis_keep  :  STD_LOGIC_VECTOR (7 downto 0);
-    signal s_axis_user  :  STD_LOGIC_VECTOR (0 downto 0);
-    signal s_axis_id    :  STD_LOGIC_VECTOR (7 downto 0);
-    signal s_axis_dest  :  STD_LOGIC_VECTOR (3 downto 0);
-    signal s_axis_last  :  STD_LOGIC;
+
     
     begin
     DUT : axi_opv4upr
-    port map( s_axis_aclk => s_axis_aclk,
+    port map( clk => clk,
         reset => reset,
         m_axis_data => m_axis_data,
         s_axis_data => s_axis_data,
         s_axis_ready => s_axis_ready,
         s_axis_valid => s_axis_valid,
         m_axis_valid => m_axis_valid,
-        m_axis_ready => m_axis_ready,
-        s_axis_strb => s_axis_strb,
-        s_axis_keep => s_axis_keep,
-        s_axis_user => s_axis_user,
-        s_axis_id => s_axis_id,
-        s_axis_dest => s_axis_dest, 
-        s_axis_last => s_axis_last);
+        m_axis_ready => m_axis_ready);
         
         
 -- please visit the friendly people at
@@ -123,9 +106,9 @@ begin
     read(row, resetting);
     reset <= to_unsigned(resetting,1)(0);    
     
-    s_axis_aclk <= '1';
+    clk <= '1';
     wait for 1 NS;
-    s_axis_aclk <= '0';
+    clk <= '0';
     wait for 1 NS;
     
     -- make a header for the output file whenever we get a reset signal    

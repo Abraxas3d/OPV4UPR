@@ -22,13 +22,12 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
--- Uncomment the following library declaration if instantiating
+--use IEEE.NUMERIC_STD.ALL;-- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
 --library UNISIM;
 --use UNISIM.VComponents.all;
 entity axi_opv4upr is
-    Port ( s_axis_aclk : in STD_LOGIC;
+    Port ( clk         : in STD_LOGIC;
            reset       : in STD_LOGIC;
            m_axis_data : out STD_LOGIC_VECTOR (63 downto 0);
            s_axis_data : in STD_LOGIC_VECTOR (63 downto 0);
@@ -36,14 +35,6 @@ entity axi_opv4upr is
            s_axis_valid : in STD_LOGIC;
            m_axis_valid : out STD_LOGIC;
            m_axis_ready : in STD_LOGIC);
--- additional ports coming from DMAC are listed here.
--- we don't use them but we have to match them.
-           s_axis_strb  : in STD_LOGIC_VECTOR (7 downto 0);
-           s_axis_keep  : in STD_LOGIC_VECTOR (7 downto 0);
-           s_axis_user  : in STD_LOGIC_VECTOR (0 downto 0);
-           s_axis_id    : in STD_LOGIC_VECTOR (7 downto 0);
-           s_axis_dest  : in STD_LOGIC_VECTOR (3 downto 0);
-           s_axis_last  : in STD_LOGIC);
 end axi_opv4upr;
 
 architecture Behavioral of axi_opv4upr is
@@ -55,9 +46,9 @@ architecture Behavioral of axi_opv4upr is
   -- constant 64 bit value of all zeros
            signal all_zeros      : STD_LOGIC_VECTOR(input_data'range) := (others => '0');
            signal all_ones       : STD_LOGIC_VECTOR(input_data'range) := (others => '1');
+           signal max_value      : STD_LOGIC_VECTOR(input_data'range) := "1000000000000000100000000000000010000000000000001000000000000000";
 begin
--- asynchronous assignments
--- pass along the data
+-- asynchronous assignments-- pass along the data
     m_axis_data <= output_data;
     input_data <= s_axis_data;
     -- get the axis_ready signal we get from upack and pass it along to DMA
@@ -66,12 +57,15 @@ begin
     s_axis_valid_i <= s_axis_valid;
     -- present our axis_valid on our master port
     m_axis_valid <= m_axis_valid_i;    
--- processes    
-pass_data : process (reset, s_axis_aclk)
+ 
+ 
+    -- processes    
+ 
+    pass_data : process (reset, clk)
     begin
         if reset = '1' then
             m_axis_valid_i <= '0';
-        elsif rising_edge(s_axis_aclk) then
+        elsif rising_edge(clk) then
             if s_axis_valid_i = '0' then
             -- clock signal happens and invalid data at input
             -- pass the input data through to the output.
@@ -79,10 +73,10 @@ pass_data : process (reset, s_axis_aclk)
         -- and then send the input data to the output data
                 m_axis_valid_i <= '0';
         -- indicate to the channel unpacker that this is invalid data (just for fun)
-            else
+            else 
                     -- clock signal happens and valid data at input
         -- overwrite the fetched value from DMA with all 1s.
-                output_data <= all_ones;
+                output_data <= max_value;
         -- and then send the input data to the output data
                 m_axis_valid_i <= '1';
         -- indicate to the channel unpacker we have valid data

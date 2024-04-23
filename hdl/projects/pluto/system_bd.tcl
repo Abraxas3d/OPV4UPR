@@ -291,8 +291,7 @@ ad_connect axi_ad9361/dac_data_i1 tx_upack/fifo_rd_data_2
 ad_connect axi_ad9361/dac_enable_q1 tx_upack/enable_3
 ad_connect axi_ad9361/dac_data_q1 tx_upack/fifo_rd_data_3
 
-#ad_connect tx_upack/s_axis  axi_ad9361_dac_dma/m_axis
-# OPV4UPR instance and inserts below in its own section
+ad_connect tx_upack/s_axis  axi_ad9361_dac_dma/m_axis
 
 ad_ip_instance util_vector_logic logic_or [list \
   C_OPERATION {or} \
@@ -347,22 +346,27 @@ ad_connect  logic_or_1/Op1  axi_ad9361/rst
 ad_connect  logic_or_1/Op2  axi_tdd_0/tdd_channel_2
 ad_connect  logic_or_1/Res  tx_upack/reset
 
-# -=-=-=-=-=-=-= OPV4UPR -=-=-=-=-=-=-=-=-
 
-ad_ip_instance axi_opv4upr axi_opv4upr
+# Opulent Voice for University of Puerto Rico
 
-ad_connect axi_opv4upr/s_axis axi_ad9361_dac_dma/m_axis
-ad_connect tx_upack/s_axis axi_opv4upr/m_axis
+ad_ip_instance axi_opv4upr axi_opv4upr_0
 
-#set_param ips.enableInterfaceArrayInference false
+## connecting buses below did not work
+## buses were declared in the block tcl file in the standard way
+## something is still missing, though. So, individual connections
+## were made. See section below this one for those commands. 
+#ad_connect axi_ad9361_dac_dma/m_axis axi_opv4upr_0/s_axis
+#ad_connect tx_upack/s_axis axi_opv4upr_0/m_axis
 
+ad_connect axi_ad9361_dac_dma/m_axis_data axi_opv4upr_0/s_axis_data
+ad_connect axi_ad9361_dac_dma/m_axis_ready axi_opv4upr_0/s_axis_ready
+ad_connect axi_ad9361_dac_dma/m_axis_valid axi_opv4upr_0/s_axis_valid
+ad_connect tx_upack/s_axis_data axi_opv4upr_0/m_axis_data
+ad_connect tx_upack/s_axis_valid axi_opv4upr_0/m_axis_valid
+ad_connect tx_upack/s_axis_ready axi_opv4upr_0/m_axis_ready
 
-# check if this is the right clock and reset
-
-#ad_connect  axi_ad9361/l_clk axi_opv4upr/s_axis_aclk
-ad_connect  axi_ad9361/rst  axi_opv4upr/reset
-
-
+ad_connect axi_ad9361/l_clk axi_opv4upr_0/clk
+ad_connect logic_or_1/Res axi_opv4upr_0/reset
 
 
 # interconnects
@@ -372,8 +376,6 @@ ad_cpu_interconnect 0x7C400000 axi_ad9361_adc_dma
 ad_cpu_interconnect 0x7C420000 axi_ad9361_dac_dma
 ad_cpu_interconnect 0x7C430000 axi_spi
 ad_cpu_interconnect 0x7C440000 axi_tdd_0
-# OPV4UPR
-#ad_cpu_interconnect 0x7C450000 axi_opv4upr
 
 ad_ip_parameter sys_ps7 CONFIG.PCW_USE_S_AXI_HP1 {1}
 ad_connect sys_cpu_clk sys_ps7/S_AXI_HP1_ACLK
